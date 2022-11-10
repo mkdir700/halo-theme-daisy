@@ -355,22 +355,23 @@
         <div class="widget-hr border-b border-gray-300 w-full mb-4">
         </div>
         <div class="widget-content text-767676 dark:text-[#999]">
-            <@linkTag method="listTeams">
-                <#list teams as team>
-                    <ul>
-                        <#if team.team == "${settings.link_disp!}">
-                            <#list team.links as link>
-                                <li class="py-1 flex justify-start w-full space-x-1">
-                                    <div class="truncate block">
-                                        <i class="ri-arrow-right-s-fill"></i>
-                                        <a class="hover:text-black dark:hover:text-white" href="${link.url!}"
-                                           target="_blank">${link.name!}</a>
-                                    </div>
-                                </li>
-                            </#list>
-                        </#if>
-                    </ul>
-                </#list>
+            <@linkTag method="count">
+                <#if (count > 0)>
+                <ul>
+                    <@linkTag method="list">
+                        <#list links as link>
+                            <li class="py-1 flex justify-start w-full space-x-1">
+                                <div class="truncate block">
+                                    <i class="ri-arrow-right-s-fill"></i>
+                                    <a href="${link.url!}" target="_blank" class="hover:text-black dark:hover:text-white">${link.name!}</a>
+                                </div>
+                            </li>
+                        </#list>
+                    </@linkTag>
+                </ul>
+                <#else>
+                <a href="/links" class="hover:text-black dark:hover:text-white">或许孤独才是人生的常态</a>
+                </#if>
             </@linkTag>
         </div>
     </div>
