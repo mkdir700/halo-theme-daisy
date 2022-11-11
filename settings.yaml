@@ -68,6 +68,17 @@ sns:
 theme:
   label: 外观设置
   items:
+    logo:
+      name: show_logo
+      label: 是否展示logo
+      type: radio
+      default: true
+      data-type: bool
+      options:
+        - value: true
+          label: 开
+        - value: false
+          label: 关
     init_click:
       name: init_click
       label: 局部刷新
