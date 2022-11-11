@@ -88,10 +88,14 @@
 
 <#macro header>
     <header class="hidden fixed w-[330px] px-16 h-screen space-y-16 lg:flex flex-col justify-center content-start bg-white dark:bg-neutral-900">
-        <div class="logo">
-            <a href="${blog_url!}" title="${blog_title!}">
+        <div class="logo text-2xl text-black font-serif antialiased dark:text-white">
+        <a href="${blog_url!}" title="${blog_title!}">
+            <#if settings.show_log?? && settings.show_logo!true>
                 <img src="${blog_logo!}" alt="${blog_title!}" class="max-h-20">
-            </a>
+            <#else>
+                <span>${blog_title}</span>
+            </#if>
+        </a>
         </div>
         <div class="nav">
             <ul class="text-767676 dark:text-[#999] space-y-2">
@@ -141,9 +145,13 @@
     </header>
     <header class="lg:hidden bg-white sticky top-0 z-50 dark:bg-neutral-900">
         <div class="flex justify-between p-4">
-            <div class="logo">
+            <div class="logo text-2xl text-black font-serif antialiased dark:text-white">
                 <a href="${blog_url!}" title="${blog_title!}">
-                    <img class="max-h-8" src="${blog_logo!}" alt="${blog_title!}">
+                    <#if settings.show_log?? && settings.show_logo!true>
+                        <img src="${blog_logo!}" alt="${blog_title!}" class="max-h-8">
+                    <#else>
+                        <span>${blog_title}</span>
+                    </#if>
                 </a>
             </div>
             <div class="menu dark:text-[#999] space-x-3">
